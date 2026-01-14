@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Simran ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffe5ec;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica', sans-serif;
+            overflow: hidden;
+            background-image: radial-gradient(#ffb3c1 0.8px, transparent 0.8px);
+            background-size: 24px 24px;
+        }
+
+        /* 3D Floating Hearts Background */
+        .bg-heart {
+            position: absolute;
+            color: #ff8fa3;
+            opacity: 0.5;
+            font-size: 20px;
+            z-index: 1;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(255, 77, 109, 0.3);
+            text-align: center;
+            border: 5px solid white;
+            width: 350px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .gif-display {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #fb6f92;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            min-height: 130px;
+        }
+
+        button {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s transform ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn { background: #fb6f92; color: white; }
+        #noBtn { background: white; color: #fb6f92; }
+
+        .hidden { display: none; }
+        
+        .bunny-sig {
+            margin-top: 20px;
+            color: #ff8fa3;
+            font-size: 0.9rem;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* Cute Stickers */
+        .sticker {
+            position: absolute;
+            font-size: 40px;
+            animation: floatSide 4s infinite ease-in-out;
+            z-index: 11;
+        }
+        @keyframes floatSide {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        #musicControl {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://archive.org/download/soft-lofi-beat/SoftLofiBeat.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="musicControl" onclick="toggleMusic()">🎵</div>
+
+    <div class="sticker" style="top:10%; left:5%;">🌸</div>
+    <div class="sticker" style="bottom:15%; right:5%;">🐰</div>
+    <div class="sticker" style="top:20%; right:10%;">✨</div>
+    <div class="sticker" style="bottom:20%; left:10%;">🍭</div>
+
+    <div id="proposalBox" class="card">
+        <img class="gif-display" src="https://media.tenor.com/T_i_9mS96_AAAAAi/mocha-cute.gif" alt="Asking">
+        <h1>Will you be mine, Simran? ✨</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="handleYes()">Yes</button>
+            <button id="noBtn" onclick="handleNo()">No</button>
+        </div>
+    </div>
+
+    <div id="excitementBox" class="card hidden">
+        <img class="gif-display" src="https://media.tenor.com/vS_8C1X9T70AAAAi/mochi-peach.gif" alt="Excited">
+        <h1>Really Really you really like me? 🥹💖</h1>
+        <div class="buttons">
+            <button class="yes-btn" style="background:#fb6f92; color:white; border-radius:50px; padding:12px 28px; font-weight:bold;" onclick="showFinal()">Yes!!</button>
+            <button class="no-btn" style="background:white; color:#fb6f92; border-radius:50px; padding:12px 28px; font-weight:bold;" onclick="showSad()">No</button>
+        </div>
+    </div>
+
+    <div id="successBox" class="card hidden">
+        <img class="gif-display" src="https://https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnR6bm9mZ3R4cnA1bm9mZ3R4cnA1bm9mZ3R4cnA1JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/c76IJLufpNwSULPk77/giphy.gif" alt="Happy">
+        <h1>hehe i knew it you love me from start! 🥰</h1>
+        <p class="bunny-sig">lots of love from your fav bunny 🐰✨</p>
+    </div>
+
+    <div id="sadBox" class="card hidden">
+        <img class="gif-display" src="https://media.tenor.com/f0mXhY9Uv7IAAAAi/peach-goma.gif" alt="Sad">
+        <h1>I know you hate me simran 💔</h1>
+        <button onclick="location.reload()" style="background:white; color:#fb6f92; border:1px solid #fb6f92; border-radius:50px; padding:10px 20px;">meri pyaari si simi give me a chance 🥺</button>
+    </div>
+
+    <script>
+        let yesScale = 1;
+        const music = document.getElementById('bgMusic');
+
+        // Generate background hearts
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = ['❤️', '💖', '💝', '💗', '🌸'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHearts, 500);
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                document.getElementById('musicControl').innerHTML = "⏸️";
+            } else {
+                music.pause();
+                document.getElementById('musicControl').innerHTML = "🎵";
+            }
+        }
+
+        function handleNo() {
+            music.play();
+            yesScale += 0.2; 
+            const yesBtn = document.getElementById('yesBtn');
+            yesBtn.style.transform = `scale(${yesScale})`;
+            
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * 100 - 50;
+            const y = Math.random() * 100 - 50;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function handleYes() {
+            music.play();
+            document.getElementById('proposalBox').classList.add('hidden');
+            document.getElementById('excitementBox').classList.remove('hidden');
+        }
+
+        function showFinal() {
+            document.getElementById('excitementBox').classList.add('hidden');
+            document.getElementById('successBox').classList.remove('hidden');
+        }
+
+        function showSad() {
+            document.getElementById('excitementBox').classList.add('hidden');
+            document.getElementById('sadBox').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
